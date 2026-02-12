@@ -9,10 +9,10 @@ This project explores **Game Engine Architecture** and **Memory Management** in 
 
 ## Key Features
 
-**Custom ECS Architecture:** Complete separation of Data (Components), Logic (Systems), and Identity (Entities).
-**Physics & Collision:** Custom vector math implementation for movement, recoil, and bounding-circle collision detection.
-**Data-Driven Design:** Game variables (speed, spawn rates, window size) are loaded from an external configuration file.
-**Special Mechanics:** Implemented weapon cooldowns, special attack **(WIP)**, and fragment-based destruction effects.
+* **Custom ECS Architecture:** Complete separation of Data (Components), Logic (Systems), and Identity (Entities).
+* **Physics & Collision:** Custom vector math implementation for movement, recoil, and bounding-circle collision detection.
+* **Data-Driven Design:** Game variables (speed, spawn rates, window size) are loaded from an external configuration file.
+* **Special Mechanics:** Implemented weapon cooldowns, special attack **(WIP)**, and fragment-based destruction effects.
 
 ## Controls
 
