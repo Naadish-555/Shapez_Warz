@@ -1,44 +1,112 @@
-# PLUG AND PLAY SFMLCmakeSetup!
 
----
+# Poly Wars
 
-## What is it?
+> A 2D geometry shooter built from scratch using a custom Entity Component System (ECS).
 
-I already set up an SFML project for you! Take it and enjoy! You don't need to know CMake!
+## Overview
 
-![image](https://github.com/meemknight/SFMLCmakeSetup/assets/36445656/8d4d20b9-6b59-41cc-b2c4-b3c410f78b63)
+This project explores **Game Engine Architecture** and **Memory Management** in C++. It implements a custom engine from the ground up, moving away from traditional OOP inheritance in favor of a data-oriented **Entity Component System (ECS)**. The simulation manages entity lifecycles, collision detection, and rendering pipelines manually.
+
+## Key Features
+
+**Custom ECS Architecture:** Complete separation of Data (Components), Logic (Systems), and Identity (Entities).
+**Physics & Collision:** Custom vector math implementation for movement, recoil, and bounding-circle collision detection.
+**Data-Driven Design:** Game variables (speed, spawn rates, window size) are loaded from an external configuration file.
+**Special Mechanics:** Implemented weapon cooldowns, special attack **(WIP)**, and fragment-based destruction effects.
+
+## Controls
+
+Input mapping for the simulation:
+
+| Input | Action | Function |
+| --- | --- | --- |
+| **W, A, S, D** | Movement | Updates Velocity Component |
+| **Mouse Cursor** | Aim | Updates Transform Angle |
+| **Left Click** | Fire | Spawns Bullet Entity |
+| **Right Click** | Special **(WIP)** | Triggers Special Weapon System |
+| **P** | Pause | Toggles Game State |
+
+### Prerequisites
+
+* [CMake](https://cmake.org/download/) (3.16 or newer)
+* A C++17 compatible compiler (MSVC, GCC, or Clang)
+
+### 1. Windows (Visual Studio)
+
+1. Open Visual Studio.
+2. Select **"Open a Local Folder"** and choose this project directory.
+3. Wait for CMake to configure (check the Output window).
+4. **Important:** Switch the build configuration dropdown (top bar) to **Release** or **RelWithDebInfo**.
+* *Note: Debug mode includes safety checks that significantly reduce performance.*
 
 
-<p>Opening the Solution:</p> 
+5. Select `PolyWars.exe` from the run dropdown menu.
+6. Press **Ctrl + F5** to build and run.
 
-<img src="https://raw.githubusercontent.com/meemknight/photos/master/llge1.gif" width="350">
+### 2. macOS & Linux (Command Line)
 
-Or
+**Prerequisites:**
+You do NOT need to install SFML manually (it is fetched automatically).
+However, you need the system tools (compilers and dependencies) to build it from source.
 
-<img src="https://raw.githubusercontent.com/meemknight/photos/master/llge2.gif" width="500">
+* **Ubuntu/Debian:**
+```bash
+sudo apt update
+sudo apt install cmake build-essential libxrandr-dev libxcursor-dev libudev-dev libopenal-dev libflac-dev libvorbis-dev libgl1-mesa-dev libfreetype6-dev
 
-Running the setup
-
-Go to CMakeLists.txt, <kbd>CTRL + S</kbd> to make sure the solution was built.
-
-Then, from this dropdown select mygame.exe
-
-<img src="https://raw.githubusercontent.com/meemknight/photos/master/llge3.gif" width="200">
-
-<kbd>Ctrl + F5</kbd> to build (<kbd>F5</kbd> oppens the debugger, you usually want to press <kbd>Ctrl + F5</kbd> because it oppens faster like this.
-
-<p>Adding files:<br>
-You should add .cpp in src/ and .h in include/ Whenever you add a new file CMake will ask you if you want to add that thing, say NO every time! I am already adding all of the things automatically!
-If you accidentally say YES, just remove that file from the CMake.lists
-</p>
-
-<p>Refreshing your changes:<br>
-After you add a file, the changes should be automatically added but if you want to be sure, you can refresh changes by saving the CMake file. If you want to make a hard refresh (you might have to do that sometimes) close Visual Studio, delete the out folder, reopen VS, <kbd>CTRL + S</kbd> on CMakeLists.txt</p>
+```
 
 
-# IMPORTANT!
-  To ship the game: 
-  In Cmakelists.txt, set the PRODUCTION_BUILD flag to ON to build a shippable version of your game. This will change the file paths to be relative to your exe (RESOURCES_PATH macro), will remove the console, and also will change the asserts to not allow people to debug them. To make sure the changes take effect I recommend deleting the out folder to make a new clean build!
+* **Fedora:**
+```bash
+sudo dnf install cmake make gcc-c++ systemd-devel libX11-devel libXrandr-devel libXcursor-devel libXi-devel libXinerama-devel mesa-libGL-devel alsa-lib-devel
+
+```
 
 
-  Also, if you read the CMAKE, even if you don't know CMAKE you should understand what happens with the comments there and you can add libraries and also remove the console from there if you need to! (there is a commented line for that!)
+* **macOS:**
+```bash
+brew install cmake
+
+```
+
+
+
+**Build Steps:**
+
+1. Open a terminal in the project directory.
+2. Create a build folder:
+```bash
+mkdir build && cd build
+
+```
+
+
+3. Configure with CMake (Release mode is critical for performance):
+```bash
+cmake -DCMAKE_BUILD_TYPE=Release ..
+
+```
+
+
+4. Build the project:
+```bash
+make
+
+```
+
+
+5. Run the executable:
+```bash
+./PolyWars
+
+```
+
+
+
+## Credits
+
+* Special thanks to **Dave Churchill** and his lectures.
+* **Graphics Library:** Built using [SFML](https://www.sfml-dev.org/).
+* **Template:** SFMLCmakeSetup by [Meemknight](https://github.com/meemknight).
+* **Inspiration:** Mechanics inspired by *Geometry Wars*.
